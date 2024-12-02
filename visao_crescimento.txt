@@ -1,0 +1,7 @@
+A Visão: Crescimento
+Do lado da empresa:
+1. Quantidade de pedidos por dia.
+2. Quantidade de pedidos por semana.
+3. Distribuição dos pedidos por tipo de tráfego.
+4. Comparação do volume de pedidos por cidade e tipo de tráfego.
+5. A localização central de cada cidade por tipo de tráfego.
