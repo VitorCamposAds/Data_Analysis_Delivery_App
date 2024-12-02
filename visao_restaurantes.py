@@ -10,7 +10,7 @@ from PIL import Image
 import numpy as np
 
 #Definindo o caminho do arquivo diretamente no código
-file_path = "C:/Users/55319/Desktop/Comunidade DS/train.csv"  # Caminho fixo do arquivo
+file_path = "train.csv"  # Caminho fixo do arquivo
 
 df = pd.read_csv(file_path)
 
