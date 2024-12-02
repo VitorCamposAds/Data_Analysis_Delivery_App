@@ -11,9 +11,12 @@ import folium
 from streamlit_folium import folium_static
 import os
 
-# Definindo o caminho do arquivo diretamente no código
-file_path = "C:/Users/55319/Desktop/Comunidade DS/train.csv"  # Caminho fixo do arquivo
+import pandas as pd
+
+# Caminho relativo (mesmo diretório do script)
+file_path = "train.csv"
 df = pd.read_csv(file_path)
+
 
 # Limpeza do dataset:
 # 1. Convertendo a coluna 'Delivery_person_Age' de texto para número

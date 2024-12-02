@@ -10,8 +10,9 @@ import pandas as pd
 import os
 from PIL import Image
 
-#Definindo o caminho do arquivo diretamente no código
-file_path = "C:/Users/55319/Desktop/Comunidade DS/train.csv"  # Caminho fixo do arquivo
+# Caminho relativo (mesmo diretório do script)
+file_path = "train.csv"  # Referência direta ao arquivo CSV no mesmo diretório
+df = pd.read_csv(file_path)
 
 df = pd.read_csv(file_path)
 
