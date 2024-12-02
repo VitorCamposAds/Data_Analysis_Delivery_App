@@ -9,7 +9,8 @@ import os
 from PIL import Image
 import numpy as np
 
-file_path = "train.csv"  # Referência direta ao arquivo CSV no mesmo diretório
+#Definindo o caminho do arquivo diretamente no código
+file_path = "C:/Users/55319/Desktop/Comunidade DS/train.csv"  # Caminho fixo do arquivo
 
 df = pd.read_csv(file_path)
 
@@ -169,8 +170,8 @@ def run_dashboard():
 
                 # Ajustar o layout do gráfico
                 fig.update_layout(
-                    title='Mean-STD-City',
-                    title_font=dict(size=40),
+                    title='Time (mean/std) by City',
+                    title_font=dict(size=42),
                     xaxis_title='Cidades',
                     yaxis_title='Tempo (minutos)',
                     barmode='group',
