@@ -1,0 +1,35 @@
+# Python
+*.pyc
+*.pyo
+__pycache__
+*.pyd
+
+# Ambiente virtual
+venv/
+env/
+.venv/
+
+# Streamlit - arquivos gerados
+*.log
+*.dat
+*.pickle
+*.json
+*.csv
+*.tsv
+*.xls
+
+# Arquivos do Jupyter Notebook
+.ipynb_checkpoints/
+
+# Arquivos de dependências (caso use)
+*.env
+.env
+
+# IDEs
+.vscode/
+.idea/
+.venv/
+
+# Arquivos temporários e de sistema
+.DS_Store
+Thumbs.db
