@@ -55,7 +55,7 @@ df1['Time_taken(min)'] = df1['Time_taken(min)'].astype(int)
 st.header('Marketplace - Visão Empresa')
 
 # Exibindo imagem no sidebar
-image_path = 'C:/Users/55319/Desktop/Comunidade DS/img/logo.jpg'
+image_path = 'logo.jpg'
 image = Image.open(image_path)
 st.sidebar.image(image, width=220)
 
