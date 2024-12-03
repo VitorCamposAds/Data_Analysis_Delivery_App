@@ -171,8 +171,8 @@ def run_dashboard():
 
                 # Ajustar o layout do gráfico
                 fig.update_layout(
-                    title='Time (mean/std) by City',
-                    title_font=dict(size=42),
+                    title='Time(mean/std) por Cidade',
+                    title_font=dict(size=40),
                     xaxis_title='Cidades',
                     yaxis_title='Tempo (minutos)',
                     barmode='group',
