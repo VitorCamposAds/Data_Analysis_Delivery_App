@@ -8,9 +8,9 @@ Este projeto, ainda em andamento e em evolução, consiste em uma aplicação de
 
 A aplicação possui três dashboards interativos:
 
-1. **Visão Empresa**: Análise geral de pedidos, tráfego e pedidos por cidade.
-2. **Visão Entregadores**: Análise de desempenho dos entregadores, incluindo pedidos por semana e entregas por entregador.
-3. **Visão Geográfica**: Visualização geográfica das entregas utilizando mapas interativos.
+1. **Visão Empresa.**
+2. **Visão Entregadores.**
+3. **Visão Restaurantes.**
 
 ## Tecnologias Utilizadas
 
@@ -23,9 +23,9 @@ A aplicação possui três dashboards interativos:
 
 ## Pré-requisitos
 
-Certifique-se de ter o **Python 3.x** instalado no seu ambiente.
+Certifique-se de ter o **Python 3.10** instalado no seu ambiente.
 
-As dependências do projeto estão listadas no arquivo `requirements.txt`.
+As dependências do projeto estão listadas no arquivo ´requirements.txt`.
 
 ## Acesso aos Dashboards
 
