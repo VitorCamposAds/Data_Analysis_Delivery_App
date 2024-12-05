@@ -122,6 +122,7 @@ def plot_time_by_city_order_type(df):
 
 # Função para exibir o dataframe de tempos médios por cidade e tipo de pedido
 def display_time_by_city_order_type(df):
+    st.title('Distribuição da distância')
     cols = ['City', 'Type_of_order', 'Time_taken(min)']
     df_aux = df.groupby(['City', 'Type_of_order']).agg({'Time_taken(min)': ['mean', 'std']}).reset_index()
     df_aux.columns = ['Cidade', 'Tipo de Pedido', 'Média', 'Desvio Padrão']
