@@ -31,4 +31,4 @@ As dependências do projeto estão listadas no arquivo ´requirements.txt`.
 
 Você pode acessar os dashboards hospedados no Streamlit Cloud através do link: 
 
-[Dashboard Curry Company](https://dataanalysisdeliveryapp-pwdtvg6r8z5cskxmk6jzsw.streamlit.app/)
+[Dashboard Curry Company]([https://dataanalysisdeliveryapp-pwdtvg6r8z5cskxmk6jzsw.streamlit.app](https://dataanalysisdeliveryapp-z89fzdvesa6zhljucm6zot.streamlit.app/)
