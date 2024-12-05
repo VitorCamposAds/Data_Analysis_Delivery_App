@@ -9,6 +9,8 @@ import os
 from PIL import Image
 import numpy as np
 
+st.set_page_config(page_title='Visão Empresa', page_icon='🍽️', layout='wide')
+
 # Função para carregar o dataset
 def load_data(file_path):
     """

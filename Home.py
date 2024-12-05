@@ -12,40 +12,29 @@ image = Image.open(image_path)
 st.sidebar.image(image, width=220)
 
 # Sidebar
-st.sidebar.markdown('<h1 style="color: #4CAF50;">Curry Company</h1>', unsafe_allow_html=True)
-st.sidebar.markdown('<h2 style="color: #555;">Fastest Delivery in Town</h2>', unsafe_allow_html=True)
-st.sidebar.markdown("""<hr style="border: 1px solid #4CAF50;">""", unsafe_allow_html=True)
+st.sidebar.markdown("# Curry Company")
+st.sidebar.markdown("## Fastest Delivery in Town")
+st.sidebar.markdown("---")
 
 # Título principal
-st.markdown('<h1 style="color: #4CAF50;">Curry Company Growth Dashboard</h1>', unsafe_allow_html=True)
+st.markdown("# Curry Company Growth Dashboard")
 
 # Conteúdo do dashboard
 st.markdown(
     """
-    <div style="font-size: 18px; color: #333;">
-        Growth Dashboard foi construído para acompanhar as métricas de crescimento dos Entregadores e Restaurantes.
-        <h3>Como utilizá-lo?</h3>
-        <ul>
-            <li><strong>Visão Empresa:</strong>
-                <ul>
-                    <li>Visão Gerencial: Métricas gerais de comportamento.</li>
-                    <li>Visão Tática: Indicadores semanais de crescimento.</li>
-                    <li>Visão Geográfica: Insights de geolocalização.</li>
-                </ul>
-            </li>
-            <li><strong>Visão Entregador:</strong>
-                <ul>
-                    <li>Acompanhamento dos indicadores semanais de crescimento.</li>
-                </ul>
-            </li>
-            <li><strong>Visão Restaurante:</strong>
-                <ul>
-                    <li>Indicadores semanais de crescimento dos restaurantes.</li>
-                </ul>
-            </li>
-        </ul>
-        <h3>Ask for Help</h3>
-        <p><a href="mailto:vitorbeatle@gmail.com">vitorbeatle@gmail.com</a></p>
-    </div>
-    """, unsafe_allow_html=True
+    Growth Dashboard foi construído para acompanhar as métricas de crescimento dos Entregadores e Restaurantes.
+    
+    ### Como utilizá-lo?
+    - **Visão Empresa:**
+        - Visão Gerencial: Métricas gerais de comportamento.
+        - Visão Tática: Indicadores semanais de crescimento.
+        - Visão Geográfica: Insights de geolocalização.
+    - **Visão Entregador:**
+        - Acompanhamento dos indicadores semanais de crescimento.
+    - **Visão Restaurante:**
+        - Indicadores semanais de crescimento dos restaurantes.
+    
+    ### Ask for Help
+    vitorbeatle@gmail.com
+    """
 )

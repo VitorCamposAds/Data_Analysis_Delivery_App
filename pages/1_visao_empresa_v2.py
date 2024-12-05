@@ -11,6 +11,8 @@ import folium
 from streamlit_folium import folium_static
 import os
 
+st.set_page_config(page_title='Visão Empresa', page_icon='📈💰📊', layout='wide')
+
 # Funções de Limpeza e Pré-processamento de Dados
 def cleancode(df):
     """
