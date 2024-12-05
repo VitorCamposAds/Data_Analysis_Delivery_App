@@ -189,8 +189,28 @@ def display_city_time_distribution(df):
         df_aux.columns = ['Cidade', 'Tipo de Pedido', 'Média', 'Desvio Padrão']
         # Exibindo o dataframe no Streamlit
         st.dataframe(df_aux, height=450)
+        
+# Função para exibir os gráficos de Distância Média e Tempo/Desvio Padrão por Cidade e Tráfego
+def display_avg_distance_and_time_std(df):
+    """
+    Exibe os gráficos de Distância Média e Tempo/Desvio Padrão por Cidade e Tráfego.
+    """
+    st.markdown("""---""")
+    
+    # Criar duas colunas lado a lado para exibir os gráficos
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        # Gráfico de distância média por cidade
+        fig_avg_distance = plot_avg_distance(df)
+        st.plotly_chart(fig_avg_distance, use_container_width=True)
+    
+    with col2:
+        # Gráfico de tempo e desvio padrão por cidade e condições de tráfego
+        fig_time_std = plot_time_std_by_city_traffic(df)
+        st.plotly_chart(fig_time_std, use_container_width=True)
 
-# Função principal para rodar o dashboard
+# Modificando a função principal para incluir a exibição dos gráficos
 def run_dashboard(file_path):
     """
     Função principal que carrega os dados, limpa, aplica filtros e exibe o dashboard.
@@ -206,6 +226,7 @@ def run_dashboard(file_path):
     # Exibir as diferentes componentes do dashboard
     display_overall_metrics(df_filtered)
     display_city_time_distribution(df_filtered)
+    display_avg_distance_and_time_std(df_filtered)
 
 # Rodando o app
 if __name__ == '__main__':
