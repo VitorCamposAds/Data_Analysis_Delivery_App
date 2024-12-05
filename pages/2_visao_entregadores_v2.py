@@ -6,7 +6,7 @@ import streamlit as st
 from datetime import datetime
 from PIL import Image
 
-st.set_page_config(page_title='Visão Empresa', page_icon='🏍️', layout='wide')
+st.set_page_config(page_title='Visão Entregadores', page_icon='🏍️', layout='wide')
 
 # Função para carregar o dataset
 def load_data(file_path):
