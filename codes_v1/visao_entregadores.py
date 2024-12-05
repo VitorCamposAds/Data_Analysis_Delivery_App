@@ -10,107 +10,106 @@ import pandas as pd
 import os
 from PIL import Image
 
-# Caminho relativo (mesmo diretório do script)
-file_path = "train.csv"  # Referência direta ao arquivo CSV no mesmo diretório
+#Definindo o caminho do arquivo diretamente no código
+file_path = "C:/Users/55319/Desktop/Comunidade DS/train.csv"  # Caminho fixo do arquivo
+
 df = pd.read_csv(file_path)
 
-def run_dashboard():
-    #Limpeza dataset:
-    df1 = df.copy()
+#Limpeza dataset:
+df1 = df.copy()
 
-    linhas_selecionadas = df1['Delivery_person_Age'] != 'NaN '
-    df1 = df1.loc[linhas_selecionadas, :].copy()
-    # Converter a coluna para int
-    df1['Delivery_person_Age'] = df1['Delivery_person_Age'].astype(int)
+linhas_selecionadas = df1['Delivery_person_Age'] != 'NaN '
+df1 = df1.loc[linhas_selecionadas, :].copy()
+# Converter a coluna para int
+df1['Delivery_person_Age'] = df1['Delivery_person_Age'].astype(int)
 
-    df1 = df1[df1['City'] != 'NaN ']
-    df1 = df1[df1['Festival'] != 'NaN ']
-    df1 = df1[df1['Road_traffic_density'] != 'NaN '] 
+df1 = df1[df1['City'] != 'NaN ']
+df1 = df1[df1['Festival'] != 'NaN ']
+df1 = df1[df1['Road_traffic_density'] != 'NaN '] 
 
-    #2. convertendo a coluna Ratings de texto para numero decimal (float)
-    df1['Delivery_person_Ratings'] = df1['Delivery_person_Ratings'].astype(float)
+#2. convertendo a coluna Ratings de texto para numero decimal (float)
+df1['Delivery_person_Ratings'] = df1['Delivery_person_Ratings'].astype(float)
 
-    #3. convertendo a coluna order_date de texto para data
-    df1['Order_Date'] = pd.to_datetime(df1['Order_Date'], format='%d-%m-%Y')
+#3. convertendo a coluna order_date de texto para data
+df1['Order_Date'] = pd.to_datetime(df1['Order_Date'], format='%d-%m-%Y')
 
-    #4. convertendo multiple_deliveries de texto para numero inteiro (int)
-    linhas_selecionadas = (df1['multiple_deliveries'] != 'NaN ')
-    df1 = df1.loc[linhas_selecionadas, :].copy()
-    df1['multiple_deliveries'] = df1['multiple_deliveries'].astype(int)
+#4. convertendo multiple_deliveries de texto para numero inteiro (int)
+linhas_selecionadas = (df1['multiple_deliveries'] != 'NaN ')
+df1 = df1.loc[linhas_selecionadas, :].copy()
+df1['multiple_deliveries'] = df1['multiple_deliveries'].astype(int)
 
-    # 5. aplicando strip() em toda a coluna sem for:
-    df1.loc[:, 'Delivery_person_ID'] = df1.loc[:, 'Delivery_person_ID'].str.strip()
-    df1.loc[:, 'Type_of_order'] = df1.loc[:, 'Type_of_order'].str.strip()
-    df1.loc[:, 'Type_of_vehicle'] = df1.loc[:, 'Type_of_vehicle'].str.strip()
-    df1.loc[:, 'City'] = df1.loc[:, 'City'].str.strip()
-    df1.loc[:, 'ID'] = df1.loc[:, 'ID'].str.strip()
-    df1.loc[:, 'Road_traffic_density'] = df1.loc[:, 'Road_traffic_density'].str.strip()
-    df1.loc[:, 'Weatherconditions'] = df1.loc[:, 'Weatherconditions'].str.strip()
-    df1.loc[:, 'Festival'] = df1.loc[:, 'Festival'].str.strip()
+# 5. aplicando strip() em toda a coluna sem for:
+df1.loc[:, 'Delivery_person_ID'] = df1.loc[:, 'Delivery_person_ID'].str.strip()
+df1.loc[:, 'Type_of_order'] = df1.loc[:, 'Type_of_order'].str.strip()
+df1.loc[:, 'Type_of_vehicle'] = df1.loc[:, 'Type_of_vehicle'].str.strip()
+df1.loc[:, 'City'] = df1.loc[:, 'City'].str.strip()
+df1.loc[:, 'ID'] = df1.loc[:, 'ID'].str.strip()
+df1.loc[:, 'Road_traffic_density'] = df1.loc[:, 'Road_traffic_density'].str.strip()
+df1.loc[:, 'Weatherconditions'] = df1.loc[:, 'Weatherconditions'].str.strip()
+df1.loc[:, 'Festival'] = df1.loc[:, 'Festival'].str.strip()
 
-    # Remover a parte '(min)' das strings
-    df1['Time_taken(min)'] = df1['Time_taken(min)'].str.replace(r'\(min\)', '', regex=True)
+# Remover a parte '(min)' das strings
+df1['Time_taken(min)'] = df1['Time_taken(min)'].str.replace(r'\(min\)', '', regex=True)
 
-    # Converter para int
-    df1['Time_taken(min)'] = df1['Time_taken(min)'].astype(int)
+# Converter para int
+df1['Time_taken(min)'] = df1['Time_taken(min)'].astype(int)
 
-    #===================================================
-    #Barra lateral
-    #===================================================
+#===================================================
+#Barra lateral
+#===================================================
 
-    st.header('Marketplace - Visão Entregadores')
+st.header('Marketplace - Visão Entregadores')
 
-    # Exibindo imagem no sidebar
-    image_path = 'logo.jpg'
-    image = Image.open(image_path)
-    st.sidebar.image(image, width=220)
+image_path = 'C:/Users/55319/Desktop/Comunidade DS/img/logo.jpg'
+image = Image.open(image_path)
+st.sidebar.image(image, width=220)
 
-    # Sidebar
-    st.sidebar.markdown('# Curry Company')
-    st.sidebar.markdown('## Fastest Delivery in Town')
-    st.sidebar.markdown("""---""")
+# Sidebar
+st.sidebar.markdown('# Curry Company')
+st.sidebar.markdown('## Fastest Delivery in Town')
+st.sidebar.markdown("""---""")
 
-    # Selecione uma data limite
-    st.sidebar.markdown('## Selecione uma data limite')
+# Selecione uma data limite
+st.sidebar.markdown('## Selecione uma data limite')
 
-    # Usando o slider no Streamlit para selecionar uma data
-    date_slider = st.sidebar.slider(
-        'Até qual valor?',
-        value=datetime(2022, 4, 13).date(),  # Data padrão
-        min_value=datetime(2022, 2, 11).date(),  # Data mínima
-        max_value=datetime(2022, 4, 6).date(),  # Data máxima
-        format='YYYY-MM-DD'  # O formato de exibição
-    )
+# Usando o slider no Streamlit para selecionar uma data
+date_slider = st.sidebar.slider(
+    'Até qual valor?',
+    value=datetime(2022, 4, 13).date(),  # Data padrão
+    min_value=datetime(2022, 2, 11).date(),  # Data mínima
+    max_value=datetime(2022, 4, 6).date(),  # Data máxima
+    format='YYYY-MM-DD'  # O formato de exibição
+)
 
-    # Convertendo a data do slider para datetime64[ns] para compatibilidade
-    date_slider = pd.to_datetime(date_slider)
+# Convertendo a data do slider para datetime64[ns] para compatibilidade
+date_slider = pd.to_datetime(date_slider)
 
-    # Adicionando opções para o filtro de tráfego
-    st.sidebar.markdown("""---""")
+# Adicionando opções para o filtro de tráfego
+st.sidebar.markdown("""---""")
 
-    traffic_options = st.sidebar.multiselect(
-        'Quais as condições do trânsito',
-        ['Low', 'Medium', 'High', 'Jam'],
-        default=['Low', 'Medium', 'High', 'Jam']
-    )
+traffic_options = st.sidebar.multiselect(
+    'Quais as condições do trânsito',
+    ['Low', 'Medium', 'High', 'Jam'],
+    default=['Low', 'Medium', 'High', 'Jam']
+)
 
-    st.sidebar.markdown("""---""")
-    st.sidebar.markdown('### @Powered by Vitor Campos Moura Costa')
+st.sidebar.markdown("""---""")
+st.sidebar.markdown('### @Powered by Vitor Campos Moura Costa')
 
-    # Aplicando o filtro de data
-    linhas_selecionadas = df1['Order_Date'] < date_slider
-    df1 = df1.loc[linhas_selecionadas, :]
+# Aplicando o filtro de data
+linhas_selecionadas = df1['Order_Date'] < date_slider
+df1 = df1.loc[linhas_selecionadas, :]
 
 
-    # Aplicando o filtro de trânsito
-    linhas_selecionadas = df1['Road_traffic_density'].isin(traffic_options)
-    df1 = df1.loc[linhas_selecionadas, :]
+# Aplicando o filtro de trânsito
+linhas_selecionadas = df1['Road_traffic_density'].isin(traffic_options)
+df1 = df1.loc[linhas_selecionadas, :]
 
 #===================================================
 #Layout streamlit
 #===================================================
 
-
+def run_dashboard():
     tab1 = st.tabs(['Visão Gerencial'])[0]  # Só cria a primeira aba
 
     with tab1:
