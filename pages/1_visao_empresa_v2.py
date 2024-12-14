@@ -124,6 +124,15 @@ def sidebar():
     )
     return pd.to_datetime(date_slider)
 
+    st.sidebar.markdown("""---""")
+    
+    # Filtro de condições de tráfego
+    traffic_options = st.sidebar.multiselect(
+        'Quais as condições do trânsito?',
+        ['Low', 'Medium', 'High', 'Jam'],
+        default=['Low', 'Medium', 'High', 'Jam']
+    )
+
 def main(df):
     """ Função principal para rodar a aplicação Streamlit """
     # Limpeza dos dados
