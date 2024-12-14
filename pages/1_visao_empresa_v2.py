@@ -98,20 +98,19 @@ def country_maps(df1):
     
     folium_static(map, width=700, height=350)
 
-# Funções de Interface com o Usuário (Streamlit)
+# Função para exibir a barra lateral
 def sidebar():
-    """ Função para criar a barra lateral no Streamlit """
-    st.header('Marketplace - Visão Empresa')
-
-    # Exibindo imagem no sidebar
-    image_path = 'logo.jpg'
-    image = Image.open(image_path)
-    st.sidebar.image(image, width=220)
-
-    # Sidebar título e descrição
+    """
+    Exibe a barra lateral do Streamlit com logo, título, data e filtros.
+    """
     st.sidebar.markdown('# Curry Company')
     st.sidebar.markdown('## Fastest Delivery in Town')
     st.sidebar.markdown("""---""")
+
+    # Adicionando logo
+    image_path = 'logo.jpg'
+    image = Image.open(image_path)
+    st.sidebar.image(image, width=220)
 
     # Filtro de data
     st.sidebar.markdown('## Selecione uma data limite')
@@ -122,7 +121,6 @@ def sidebar():
         max_value=datetime(2022, 4, 6).date(),
         format='YYYY-MM-DD'
     )
-    return pd.to_datetime(date_slider)
 
     st.sidebar.markdown("""---""")
     
@@ -132,6 +130,13 @@ def sidebar():
         ['Low', 'Medium', 'High', 'Jam'],
         default=['Low', 'Medium', 'High', 'Jam']
     )
+    
+    # Créditos
+    st.sidebar.markdown("""---""")
+    st.sidebar.markdown('### @Powered by Vitor Campos Moura Costa')
+
+    return pd.to_datetime(date_slider), traffic_options
+
 
 def main(df):
     """ Função principal para rodar a aplicação Streamlit """
@@ -139,10 +144,16 @@ def main(df):
     df1 = cleancode(df)
 
     # Filtros na barra lateral
-    date_slider = sidebar()
+    date_slider, traffic_options = sidebar()
+    
+    # Certificando que a coluna 'Order_Date' esteja em formato datetime
+    df1['Order_Date'] = pd.to_datetime(df1['Order_Date'], errors='coerce')
     
     # Aplicando o filtro de data
-    df1 = df1[df1['Order_Date'] < date_slider]
+    df1 = df1[df1['Order_Date'] < pd.to_datetime(date_slider)]
+
+    # Aplicando o filtro de tráfego
+    df1 = df1[df1['Road_traffic_density'].isin(traffic_options)]
 
     # Títulos para as abas
     tab1, tab2, tab3 = st.tabs(['Visão Gerencial', 'Visão Estratégica', 'Visão Geográfica'])
@@ -184,6 +195,7 @@ def main(df):
         # Localização por Tráfego
         st.markdown("# Localização por Tráfego")
         country_maps(df1)
+
 
 # Código para rodar a aplicação
 if __name__ == "__main__":
