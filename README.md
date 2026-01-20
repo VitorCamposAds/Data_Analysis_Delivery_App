@@ -84,7 +84,7 @@ O painel estratégico foi desenvolvido utilizando as métricas que refletem as 3
 ## 5. O produto final do projeto
 O produto final do projeto é um painel online, hospedado na nuvem e disponível para acesso em qualquer dispositivo conectado à internet. O painel pode ser acessado através do seguinte link:
 
-[Dashboard Curry Company 1](https://vitorcampos-curry-company.streamlit.app/)
+[Dashboard Curry Company 1](https://fomezero-vitorcamposapp.streamlit.app/)
 
 ---
 
